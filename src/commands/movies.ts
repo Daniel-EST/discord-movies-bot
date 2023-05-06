@@ -45,7 +45,7 @@ export const getMovieInfo = async (title: string, year: string=''): Promise<Movi
     searchParams:
     {
       t: title,
-      y: year,
+      y: year ? '' : year.trim(),
       apiKey: environment.OMDB_TOKEN,
       r: 'json',
       plot: 'short',
@@ -105,9 +105,9 @@ export const addMovie: Command = {
   run: async (interaction: CommandInteraction) => {
     await interaction.deferReply()
     const title = interaction.options.data[0]?.value as string
-    const ano = interaction.options.data[1]?.value as string
+    const year = interaction.options.data[1]?.value as string
     try {
-      const movie: Movie = await getMovieInfo(title.trim(), ano.trim())
+      const movie: Movie = await getMovieInfo(title.trim(), year)
 
       switch (movie.Response) {
         case 'True': {
@@ -234,7 +234,7 @@ export const infoMovie: Command = {
     await interaction.deferReply()
     const title = interaction.options.data[0]?.value as string
     const year = interaction.options.data[1]?.value as string
-    const movie: Movie = await getMovieInfo(title.trim(), year.trim())
+    const movie: Movie = await getMovieInfo(title.trim(), year)
     switch (movie.Response) {
       case 'True': {
         const movieEmbed = new EmbedBuilder()
