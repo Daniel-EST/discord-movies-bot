@@ -1,0 +1,31 @@
+{
+  "name": "tci-filmes",
+  "version": "1.0.0",
+  "description": "TCI Filmes",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx ts-node src/index.ts",
+    "lint": "eslint --fix --ext .ts .",
+    "serve": "npm run lint && npm start"
+  },
+  "author": "Daniel-EST",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "eslint": "^8.40.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "discord.js": "^14.10.2",
+    "dotenv": "^16.0.3",
+    "got": "11.8.6",
+    "sequelize": "^6.31.1",
+    "sqlite3": "^5.1.6"
+  }
+}
