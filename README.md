@@ -1,6 +1,6 @@
 # TCI Filmes
 
-A simple Discord bot for tracking movie data on my small server.
+A Discord bot that helps me manage my server's movie watchlist. The bot is simple yet efficient, allowing me to easily add and remove movies from the watchlist, and providing useful information about each title such as its release year, genre, and synopsis. With this bot, my server members and I can keep track of the movies we want to watch and ensure that we never miss a great film again.
 
 ### Installation
 
@@ -58,3 +58,4 @@ Retrieving information of a movie:
 - Error handling;
 - Interactions using reactions or buttons;
 - Improve SQLite implementation'
+- Docker for easily deployment on my Raspberry Pi.
