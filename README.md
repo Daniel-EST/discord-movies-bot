@@ -51,7 +51,8 @@ npm run serve
 
 ### Example
 
-Retrieving information of a movie:
+Retrieving information of a movie:  
+
 ![](docs/example.png)
 
 ## TODO
