@@ -223,11 +223,18 @@ export const infoMovie: Command = {
         .setName('filme')
         .setDescription('Nome do filme (em inglês) que deseja verificar as informações.')
         .setRequired(true)
+    ) 
+    .addStringOption((option) =>
+    option
+      .setName('ano')
+      .setDescription('Ano do filme (em inglês) que deseja adicionar.')
+      .setRequired(false)
     ),
   run: async (interaction: CommandInteraction) => {
     await interaction.deferReply()
     const title = interaction.options.data[0]?.value as string
-    const movie: Movie = await getMovieInfo(title.trim())
+    const year = interaction.options.data[1]?.value as string
+    const movie: Movie = await getMovieInfo(title.trim(), year.trim())
     switch (movie.Response) {
       case 'True': {
         const movieEmbed = new EmbedBuilder()
