@@ -40,11 +40,12 @@ interface Movie {
   Response: string
 }
 
-export const getMovieInfo = async (title: string): Promise<Movie> => {
+export const getMovieInfo = async (title: string, year: string=''): Promise<Movie> => {
   const movie: Movie = await got.get('http://www.omdbapi.com/', {
     searchParams:
     {
       t: title,
+      y: year,
       apiKey: environment.OMDB_TOKEN,
       r: 'json',
       plot: 'short',
@@ -94,12 +95,19 @@ export const addMovie: Command = {
         .setName('filme')
         .setDescription('Nome do filme (em inglês) que deseja adicionar.')
         .setRequired(true)
+    ) 
+    .addStringOption((option) =>
+    option
+      .setName('ano')
+      .setDescription('Ano do filme (em inglês) que deseja adicionar.')
+      .setRequired(false)
     ),
   run: async (interaction: CommandInteraction) => {
     await interaction.deferReply()
     const title = interaction.options.data[0]?.value as string
+    const ano = interaction.options.data[1]?.value as string
     try {
-      const movie: Movie = await getMovieInfo(title.trim())
+      const movie: Movie = await getMovieInfo(title.trim(), ano.trim())
 
       switch (movie.Response) {
         case 'True': {
