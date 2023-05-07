@@ -111,22 +111,15 @@ export const addMovie: Command = {
 
       switch (movie.Response) {
         case 'True': {
-          try {
-            await MoviesTable.create({
-              movie_id: movie.imdbID,
-              movie_title: movie.Title,
-              user: interaction.user.tag,
-              date: new Date()
-            })
-            await interaction.editReply({
-              content: `O Filme "${movie.Title}" foi adicionado.`
-            })
-          } catch (err) {
-            console.log(err)
-            // if (err.name === 'SequelizeUniqueConstraintError') {
-            //   return interaction.reply('Este filme já esta na lista');
-            // }
-          }
+          await MoviesTable.create({
+            movie_id: movie.imdbID,
+            movie_title: movie.Title,
+            user: interaction.user.tag,
+            date: new Date()
+          })
+          await interaction.editReply({
+            content: `O Filme "${movie.Title}" foi adicionado.`
+          })
           break
         }
         case 'False': {
